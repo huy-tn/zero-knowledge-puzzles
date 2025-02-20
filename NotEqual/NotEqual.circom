@@ -8,10 +8,24 @@ pragma circom 2.1.4;
 
 // HINT:NEGATION
 
-template NotEqual() {
+template IsZero() {
+  signal input in;
+  signal output out;
 
-    // Your code here.
-   
+  signal inv <-- in != 0 ? 1 / in : 0;
+  out <== 1 - (in * inv);
+
+  in * out === 0;
+}
+
+template NotEqual() {
+  signal input a[2];
+  signal output c;
+
+  signal e;
+
+  e <== IsZero()(a[1] - a[0]);
+  c <== 1 - e;
 }
 
 component main = NotEqual();
