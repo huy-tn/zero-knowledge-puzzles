@@ -14,6 +14,12 @@ template QuadraticEquation() {
     signal output out;  // If res is correct , then return 1 , else 0 . 
 
     // your code here
+    signal v1;
+    signal v2;
+
+    v1 <== a * x + b;
+    v2 <== v1 * x + c;
+    IsEqual()([v2, res]) ==> out;
 }
 
 component main  = QuadraticEquation();
