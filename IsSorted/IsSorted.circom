@@ -8,6 +8,14 @@ include "../node_modules/circomlib/circuits/comparators.circom";
 template IsSorted() {
     signal input in[4];
 
+    component lt[3];
+    for (var i = 0; i < 3; i++) {
+        lt[i] = LessEqThan(252);
+        lt[i].in[0] <== in[i];
+        lt[i].in[1] <== in[i + 1];
+        lt[i].out === 1;
+    }
+
 }
 
 component main = IsSorted();
