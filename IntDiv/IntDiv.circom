@@ -20,7 +20,7 @@ template IntDiv(n) {
     signal checkDenominator;
 
     quotient * denominator + remainder === numerator;
-    checkRemainder <== LessEqThan(n)([remainder, denominator]);
+    checkRemainder <== LessThan(n)([remainder, denominator]);
     checkDenominator <== LessThan(n)([0, denominator]);
 
     checkRemainder === 1;

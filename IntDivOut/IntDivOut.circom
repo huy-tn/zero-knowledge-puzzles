@@ -21,7 +21,7 @@ template IntDivOut(n) {
     out <-- numerator \ denominator;
     remainder <-- numerator % denominator;
 
-    checkRemainder <== LessEqThan(n)([remainder, denominator]);
+    checkRemainder <== LessThan(n)([remainder, denominator]);
     checkRemainder === 1;
 
     out * denominator + remainder === numerator;
